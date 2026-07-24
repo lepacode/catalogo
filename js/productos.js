@@ -216,14 +216,6 @@ const PRODUCTOS_CATALOGO = [
         "oferta": false
     },
     {
-        "nombre": "Envase Bisagra Chico",
-        "categoria": "Envases",
-        "imagen": "assets/productos/envases/envase-plastico-tapa-bisagra-chico.webp",
-        "descripcion": "Pequeño envase plástico ideal para viandas.  Pack x50 u.",
-        "precio": 3500,
-        "oferta": false
-    },
-    {
         "nombre": "Envase Bisagra Mediano",
         "categoria": "Envases",
         "imagen": "assets/productos/envases/envase-plastico-tapa-bisagra-mediano.webp",
