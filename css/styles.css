@@ -171,7 +171,7 @@ button {
     line-height: 1;
     animation: bounceDer 1.2s ease-in-out infinite;
     color: #f57c00;
-    /* Hacemos la flecha naranja también */
+    will-change: transform;
 }
 
 .productos__titulo__desliza {
@@ -199,14 +199,11 @@ button {
 }
 
 @keyframes bounceDer {
-
-    0%,
-    100% {
-        transform: translateY(-3px) translateX(0);
+    0%, 100% {
+        transform: translateX(0);
     }
-
     50% {
-        transform: translateY(-3px) translateX(6px);
+        transform: translateX(6px);
     }
 }
 
