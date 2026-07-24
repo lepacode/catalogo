@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph / WhatsApp / Facebook Link Preview -->
+    <meta property="og:title" content="Productos Descartables - Tucu Plast">
+    <meta property="og:description"
+        content="Productos descartables: bolsas, envases, bandejas, film, láminas y papelería.">
+    <meta property="og:image" content="https://lepacode.github.io/catalogo/assets/miniatura.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://lepacode.github.io/descartables/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Productos Descartables</title>
+
+</head>
+
+<body>
+    <main>
+        <!-- ===== ENCABEZADO ===== -->
+        <header class="header">
+            <img class="header__logo" src="assets/vectores/logo.svg" alt="Productos Descartables">
+            <button class="header__pedido" type="button">Ver Pedido <span
+                    class="header__pedido__badge">0</span></button>
+        </header>
+
+        <!-- ===== SOBRE NOSOTROS ===== -->
+        <section class="nosotros">
+            <h2 class="nosotros__titulo">Sobre nosotros</h2>
+            <p class="nosotros__texto">Somos una tienda especializada en <strong>productos descartables</strong> para
+                todo tipo de necesidades. Ofrecemos platos, vasos, cubiertos, bandejas, bolsas y una amplia variedad de
+                artículos descartables de calidad, ideales para fiestas, eventos, comedores y el hogar. Entregamos en tu
+                domicilio de forma rápida y segura.</p>
+        </section>
+
+        <!-- ===== DESTACADAS DE LA SEMANA ===== -->
+        <section class="productos" aria-label="Destacadas de la semana">
+            <h2 class="productos__titulo">Destacadas de la semana <span
+                    class="productos__titulo__desliza">Desliza</span> <span class="productos__titulo__flecha"
+                    aria-hidden="true">→</span></h2>
+            <div class="productos__contenedor">
+                <div class="productos__slider">
+                    <div class="productos__track" id="destacadasTrack">
+                        <!-- Destacadas inyectadas por JS -->
+                    </div>
+                </div>
+                <div class="productos__flechas">
+                    <button class="Destacadas de la semana productos__flecha__izquierda" type="button"
+                        aria-label="Anterior"></button>
+                    <button class="productos__flecha__derecha" type="button" aria-label="Siguiente"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TUS IMPERDIBLES DEL DIA ===== -->
+        <section class="imperdibles" aria-label="Nuestros productos">
+
+            <div class="categorias" aria-label="Filtrá por categoria">
+                <h3 class="categorias__titulo">Filtrá por categoria</h3>
+                <div class="categorias__grid" id="categoriasBotones">
+                    <button class="categorias__boton categorias__boton__activo" type="button"
+                        data-target="todo">Todo</button>
+                    <button class="categorias__boton" type="button" data-target="bolsas">Bolsas</button>
+                    <button class="categorias__boton" type="button" data-target="envases">Envases</button>
+                    <button class="categorias__boton" type="button" data-target="bandejas">Bandejas</button>
+                    <button class="categorias__boton" type="button" data-target="film-y-laminas">Film y láminas</button>
+                    <button class="categorias__boton" type="button" data-target="papeleria">Papelería</button>
+                </div>
+            </div>
+
+            <input class="buscador" type="text" placeholder="Buscá un producto..." aria-label="Buscar productos">
+
+            <div class="imperdibles__grid" id="productosGrid">
+                <!-- Productos inyectados por JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== LIGHTBOX CANTIDAD ===== -->
+    <div class="lightbox-overlay" id="lightboxCantidad" aria-hidden="true">
+        <div class="lightbox">
+            <p class="lightbox__pregunta">¿Qué cantidad de <strong id="lightboxProducto">producto</strong> quieres?</p>
+            <div class="lightbox__cantidad">
+                <button class="lightbox__btn lightbox__btn--menos" type="button" aria-label="Disminuir">−</button>
+                <input class="lightbox__input" id="lightboxInput" type="number" value="1" min="1" readonly>
+                <button class="lightbox__btn lightbox__btn--mas" type="button" aria-label="Aumentar">+</button>
+            </div>
+            <p class="lightbox__precio">Precio: <span id="lightboxPrecioUnitario">$0</span></p>
+            <p class="lightbox__total">Total: <strong><span id="lightboxTotal">$0</span></strong></p>
+            <div class="lightbox__acciones">
+                <button class="lightbox__accion lightbox__accion--cancelar" type="button"
+                    id="lightboxCancelar">Cancelar</button>
+                <button class="lightbox__accion lightbox__accion--aceptar" type="button"
+                    id="lightboxAceptar">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== LIGHTBOX CONFIRMACION ===== -->
+    <div class="lightbox-overlay" id="lightboxConfirmacion" aria-hidden="true">
+        <div class="lightbox lightbox--confirmacion">
+            <div class="lightbox__check">✓</div>
+            <p class="lightbox__confirmacion__texto">Agregado al pedido</p>
+            <p class="lightbox__confirmacion__sub">Revisá <strong>Ver Pedido</strong></p>
+            <button class="lightbox__accion lightbox__accion--aceptar" type="button"
+                id="lightboxCerrarConfirmacion">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- ===== LIGHTBOX VER PEDIDO ===== -->
+    <div class="lightbox-overlay" id="lightboxPedido" aria-hidden="true">
+        <div class="lightbox lightbox--pedido">
+            <h2 class="lightbox__pedido__titulo">Tu Pedido</h2>
+            <div class="lightbox__pedido__lista" id="pedidoLista"></div>
+            <div class="lightbox__pedido__acciones">
+                <button class="lightbox__accion lightbox__accion--cancelar" type="button"
+                    id="pedidoVolver">Volver</button>
+                <button class="lightbox__accion lightbox__accion--enviar" type="button" id="pedidoEnviar">Enviar
+                    Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/productos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
