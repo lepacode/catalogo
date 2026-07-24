@@ -11,6 +11,11 @@
     --fuente: system-ui, sans-serif;
 }
 
+body,
+html {
+    overflow-x: hidden;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -741,6 +746,7 @@ button {
     max-width: 360px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
     animation: lightboxIn 0.25s ease;
+    margin: auto;
 }
 
 @keyframes lightboxIn {
